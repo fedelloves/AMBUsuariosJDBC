@@ -11,6 +11,7 @@ public class UsuarioDAO {
     private static final String SQL_SELECT = "SELECT * FROM usuario";
     private static final String SQL_INSERT = "INSERT INTO usuario (usuario, clave, nombre, apellido, email) VALUES (?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE usuario SET clave=?, nombre=?, apellido=? WHERE id_usuario=?";
+    private static final String SQL_DELETE = "DELETE FROM usuario WHERE id_usuario=?";
 
     public static List<Usuario> obtenerUsuarios() {
 
@@ -104,6 +105,32 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return rows;
+
+    }
+
+    public static int eliminarUsuario(Usuario usuario){
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+
+        try {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_DELETE);
+
+            stmt.setInt(1, usuario.getIdUsuario());
+
+            rows = stmt.executeUpdate();
+            System.out.println("Usuario eliminado: " + rows);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }finally{
             Conexion.close(stmt);
             Conexion.close(conn);
         }

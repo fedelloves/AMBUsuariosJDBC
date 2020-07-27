@@ -21,6 +21,7 @@ public class Main {
 
         //UsuarioDAO.insertarUsuario(user);
         //UsuarioDAO.modificarUsuario(user4);
+        //UsuarioDAO.eliminarUsuario(user4);
 
     }
 }
