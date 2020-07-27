@@ -17,8 +17,10 @@ public class Main {
         });
 
         Usuario user = new Usuario(0, "user1989", "clave123", "Anibal", "Cruz", "anibalc90@gmail.com");
+        Usuario user4 = new Usuario(4, "mafalda11", "clanenueva234", "Anabela", "Simon", "a.simon@gmail.com");
 
         //UsuarioDAO.insertarUsuario(user);
+        //UsuarioDAO.modificarUsuario(user4);
 
     }
 }
